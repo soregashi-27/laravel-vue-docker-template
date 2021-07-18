@@ -30,7 +30,7 @@ https://bit.ly/3kwoLVh
 composerを1系から2系に上げたかったけど、調査をしてみると予期せぬエラーが出たりしそうなので、今回のポートフォリオ作成時のcomposerは1系でいくことにする。
 予期せぬエラーで莫大な工数食いそうだったので、こういう判断をした。
 
-参考:
+参考: \
 https://qiita.com/ucan-lab/items/5a48f1a3c7a4c358223e
 
 https://qiita.com/nyokinyoki1848/items/8f7180919ffeb02c814d
