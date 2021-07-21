@@ -13,3 +13,6 @@ services:
       - ./backend:/work
       - ./infra/nginx/default.conf:/etc/nginx/conf.d/default.conf
     working_dir: /work
+
+volumes:
+  db-store:
