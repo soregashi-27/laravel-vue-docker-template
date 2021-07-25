@@ -35,25 +35,30 @@ READMEに残す内容
 git clone 編集中
 ```
 
-###cloneしたディレクトリに移動する（clone時にdir nameを変えた場合は`cd changeDirName`）
+### cloneしたディレクトリに移動する（clone時にdir nameを変えた場合は`cd changeDirName`）
 ```
 cd laravel-vue-docker-template-v1
 ```
 
-###Containerを立ち上げる`docker compose up -d --build`する
+### Containerを立ち上げる`docker compose up -d --build`する
 ```
 docker compose up -d --build
 ```
 
-###ローカルホストに接続するけどつながらないことを確認する
+### ローカルホストに接続するけどつながらないことを確認する
 （正しい：git cloneが終わった状態では `app` コンテナ内に `/work/vendor` ディレクトリが存在しないため）
 
 ## Laravelをインストールする
+### appコンテナに入るために`docker compose exec app bash`する
+```
+docker compose exec app bash
+```
 
-
-・appコンテナに入るために`docker compose exec app bash`する
-
-・Laravel6系が入ったかを確認する→`php artisan -V` （Laravel Framework 6.20.30と出るはず。「7/24現在」）
+### Laravel6系が入ったかを確認する
+```
+php artisan -V
+```
+（Laravel Framework 6.20.30と出るはず。「7/24現在」）
 
 ・もう一度ローカルホストへ接続して500 | servert errorが出ることを確認する（正しい）
 
