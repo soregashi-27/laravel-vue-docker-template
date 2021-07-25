@@ -47,7 +47,8 @@ docker compose up -d --build
 
 ### ローカルホストに接続するけどつながらないことを確認する
 （正しい：git cloneが終わった状態では `app` コンテナ内に `/work/vendor` ディレクトリが存在しないため）
-
+<br />
+<br />
 ## Laravelをインストールする
 ### appコンテナに入るために`docker compose exec app bash`する
 ```
@@ -75,8 +76,38 @@ Your app is missingというエラーが出ることを確認する（これも�
 docker compose exec app bash
 ```
 
-###アプリケーションKeyを作成する
+### アプリケーションKeyを作成する
 ```
 php artisan key:generate
 ```
+
+暗号化の際に使われる。SessionやAuth機能など。App Keyが確実に指定されていれば暗号化された値は安全。
+
+### シンボリックリンクを作成する
+```
+php artisan storage:link
+```
+`public/storage` から `storage/app/public` へのシンボリックリンクをつくる
+システムで生成したファイル等をブラウザからアクセスできるよう公開するため。`strorage dir`にアクセスするためのもの。
+
+Laravelで作ったプリケーションが公開されるとき、公開されるのは一番上の階層にある public ディレクトリのみ。 \
+public ディレクトリにファイルや処理のすべてが集約される。保存した画像も public ディレクトリ内に存在しないとアクセスすることがで着なくなってしまうので、その予防策。
+
+### 書き込み権限の追加
+```
+chmod -R 777 storage bootstrap/cache
+```
+-R : recursive \ 　
+`storage,bootstrap/cache`はフレームワークからファイル書き込みが発生するので、書き込み権限を与える。
+
+
+### migrationする
+`docker compose exec app bash` からスタート。
+
+```
+php artisan migrate
+```
+appコンテナ内で`php artisan migrate`
+
+よく起こるmigration errorはwikiに切り出す
 
