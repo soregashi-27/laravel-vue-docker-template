@@ -159,3 +159,123 @@ $ docker compose up -d --build
 設定ファイルがない状態でMySQLの初期化が行われたでデータが永続化されてしまってるので一度ボリューム毎削除してビルドし直せばok。
 
 ーーーーWikiに追加 finーーーーー
+
+### Migrationに成功したらContainerを落とす
+```
+docker compose down
+```
+
+<br />
+<br />
+
+## MySQLに接続してみる
+### local環境からdb containerにアクセスしてMySQLにログイン
+```
+docker compose exec db bash -c 'mysql -u${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE}'
+```
+
+あらかじめこのtemplateでUSER, PASSWORD, DATABASEは決めているのでログインできる。
+※適宜名前は変更すること。
+
+
+
+・テーブルの中身を確認`show tables;`
+
+```
++-------------------------+
+| Tables_in_laravel_local |
++-------------------------+
+| failed_jobs             |
+| migrations              |
+| password_resets         |
+| users                   |
++-------------------------+
+```
+
+
+
+・テーブルの構造を確認する`desc users;`
+
+DESCはdescribeの略。
+
+```
++-------------------+-----------------+------+-----+---------+----------------+
+| Field             | Type            | Null | Key | Default | Extra          |
++-------------------+-----------------+------+-----+---------+----------------+
+| id                | bigint unsigned | NO   | PRI | NULL    | auto_increment |
+| name              | varchar(255)    | NO   |     | NULL    |                |
+| email             | varchar(255)    | NO   | UNI | NULL    |                |
+| email_verified_at | timestamp       | YES  |     | NULL    |                |
+| password          | varchar(255)    | NO   |     | NULL    |                |
+| remember_token    | varchar(100)    | YES  |     | NULL    |                |
+| created_at        | timestamp       | YES  |     | NULL    |                |
+| updated_at        | timestamp       | YES  |     | NULL    |                |
++-------------------+-----------------+------+-----+---------+----------------+
+```
+
+
+
+それぞれの項目の意味
+
+Field：カラム名
+
+Type：データ型
+
+Null：Nullの値を入れられるかどうか。できる場合は `YES`、できない場合は `NO`。
+
+Key：インデックス設定されているかどうか。主キー（PRIMARY KEY）の場合は `PRI`、 UNIQUEインデックスの場合は `UNI`、同じ値が現れることが許可されているインデックスの場合は `MUL`。
+
+Default：デフォルト値。なにも設定されていない場合は、最初に `NULL` が格納される
+
+Extra：追加情報。`auto_increment` （指定したカラムに対してMySQLが自動的に一意のシーケンス番号を生成する機能）など。
+
+
+
+・Laravelのログをコンテナログに表示
+
+`backend/.env` を修正
+
+```
+LOG_CHANNEL=stderr
+```
+
+
+
+backend/routes/web.php
+
+```
+Route::get('/', function () {
+    logger('welcome route.');
+    return view('welcome');
+});
+```
+
+
+
+logをみる方法3パターン
+
+```
+$ docker compose logs
+
+# -f でログウォッチ
+$ docker compose logs -f
+
+# サービス名を指定してログを表示
+$ docker compose logs -f app
+```
+
+`docker compose logs -f app`のあとに、`http://127.0.0.1:8080/`に接続するlog上にこんな感じで表示される
+
+```
+app_1  | [2021-07-25 05:48:53] local.DEBUG: welcome route.  
+app_1  | 172.20.0.3 -  25/Jul/2021:05:48:51 +0000 "GET /index.php" 200
+```
+
+
+
+開発環境が整ったので開発スタート。
+
+
+vue、vuetifyを追加（wikiリンク→準備中）
+
+Laravelの初期設定。（wikiリンク→準備中）
