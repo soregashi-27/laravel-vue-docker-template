@@ -179,7 +179,10 @@ docker compose exec db bash -c 'mysql -u${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQ
 
 
 
-・テーブルの中身を確認`show tables;`
+### テーブルの中身を確認
+```
+show tables;
+```
 
 ```
 +-------------------------+
@@ -193,8 +196,10 @@ docker compose exec db bash -c 'mysql -u${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQ
 ```
 
 
-
-・テーブルの構造を確認する`desc users;`
+### テーブルの構造を確認する
+```
+desc users;
+```
 
 DESCはdescribeの略。
 
@@ -214,8 +219,8 @@ DESCはdescribeの略。
 ```
 
 
-
-それぞれの項目の意味
+**それぞれの項目の意味**
+表形式に変える↓
 
 Field：カラム名
 
@@ -231,15 +236,12 @@ Extra：追加情報。`auto_increment` （指定したカラムに対してMySQ
 
 
 
-・Laravelのログをコンテナログに表示
-
-`backend/.env` を修正
+### Laravelのログをコンテナログに表示
+`backend/.env` を修正する
 
 ```
 LOG_CHANNEL=stderr
 ```
-
-
 
 backend/routes/web.php
 
@@ -251,8 +253,7 @@ Route::get('/', function () {
 ```
 
 
-
-logをみる方法3パターン
+**logをみる方法3パターン**
 
 ```
 $ docker compose logs
