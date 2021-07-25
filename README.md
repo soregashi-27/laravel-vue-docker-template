@@ -60,16 +60,23 @@ php artisan -V
 ```
 （Laravel Framework 6.20.30と出るはず。「7/24現在」）
 
-・もう一度ローカルホストへ接続して500 | servert errorが出ることを確認する（正しい）
+### もう一度ローカルホストへ接続
+500 | servert errorが出ることを確認する（正しい）
+`composer install` 時は `.env` 環境変数ファイルは作成されないので、 `.env.example` を元にコピーして作成する必要がある。
 
-　→`composer install` 時は `.env` 環境変数ファイルは作成されないので、 `.env.example` を元にコピーして作成する
+### app container内で`.envファイル`を作成 
+```
+cp .env.example .envを入力
+```
+Your app is missingというエラーが出ることを確認する（これも正しい）
 
-・app container内で`.envファイル`を作成 `cp .env.example .env`を入力
+### アプリケーションKeyを作成するために、app containerを立ち上げる
+```
+docker compose exec app bash
+```
 
-　→Your app is missingというエラーが出る（これも正しい）
+###アプリケーションKeyを作成する
+```
+php artisan key:generate
+```
 
-・アプリケーションKeyを作成するために、app containerを立ち上げる`docker compose exec app bash`
-
-・`php artisan key:generate`でアプリケーションKeyを作成する
-
-　→
