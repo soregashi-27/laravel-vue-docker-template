@@ -24,3 +24,13 @@ wikiに書く内容 \
 
 + laravel UIを追加する時の注意点
 + laravel6.*の場合はver.1がmust. これ以外のバージョンは非対応 
+
+---------
+
+READMEに残す内容
+
+・git cloneする
+
+・cloneしたディレクトリに移動する
+
+・`docker compose up -d --build`する
