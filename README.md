@@ -29,8 +29,42 @@ wikiに書く内容 \
 
 READMEに残す内容
 
-・git cloneする
+## Docker Containerを立ち上げる
+### git cloneする
+```
+git clone 編集中
+```
 
-・cloneしたディレクトリに移動する
+###cloneしたディレクトリに移動する（clone時にdir nameを変えた場合は`cd changeDirName`）
+```
+cd laravel-vue-docker-template-v1
+```
 
-・`docker compose up -d --build`する
+###Containerを立ち上げる`docker compose up -d --build`する
+```
+docker compose up -d --build
+```
+
+###ローカルホストに接続するけどつながらないことを確認する
+（正しい：git cloneが終わった状態では `app` コンテナ内に `/work/vendor` ディレクトリが存在しないため）
+
+## Laravelをインストールする
+
+
+・appコンテナに入るために`docker compose exec app bash`する
+
+・Laravel6系が入ったかを確認する→`php artisan -V` （Laravel Framework 6.20.30と出るはず。「7/24現在」）
+
+・もう一度ローカルホストへ接続して500 | servert errorが出ることを確認する（正しい）
+
+　→`composer install` 時は `.env` 環境変数ファイルは作成されないので、 `.env.example` を元にコピーして作成する
+
+・app container内で`.envファイル`を作成 `cp .env.example .env`を入力
+
+　→Your app is missingというエラーが出る（これも正しい）
+
+・アプリケーションKeyを作成するために、app containerを立ち上げる`docker compose exec app bash`
+
+・`php artisan key:generate`でアプリケーションKeyを作成する
+
+　→
