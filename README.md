@@ -1,6 +1,10 @@
 # laravel-vue-docker-template-v1
 Dev-template-Ver.1 with laravel6.* on vue2.* based on docker.
 
+
+![Laravel 6.20.30](https://img.shields.io/badge/Laravel-6.20.30-red)
+<img src="https://img.shields.io/badge/-Docker-EEE.svg?logo=docker&style=flat">
+
 ※編集中
 
 ・バージョン（Laravel:6.20.30, Docker, Docker Compose, ...）
