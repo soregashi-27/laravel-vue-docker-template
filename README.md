@@ -99,50 +99,7 @@ php artisan migrate
 appコンテナ内で`php artisan migrate`
 
 よく起こるmigration errorはwikiに切り出す
-
-
-ーーーーWikiに追加ーーーーーーー
-
-よく起こしがちな **マイグレーションエラーの補足**
-
-Host '172.27.0.2' is not allowed to connect to this MySQL server
-
-```
-$ php artisan migrate
-   Illuminate\Database\QueryException  : SQLSTATE[HY000] [1130] Host '172.27.0.2' is not allowed to connect to this MySQL server (SQL: select * from information_schema.tables where table_schema = homestead and table_name = migrations and table_type = 'BASE TABLE')
-
-  at /work/vendor/laravel/framework/src/Illuminate/Database/Connection.php:664
-    660|         // If an exception occurs when attempting to run a query, we'll format the error
-    661|         // message to include the bindings with SQL, which will make this exception a
-    662|         // lot more helpful to the developer instead of just the database's errors.
-    663|         catch (Exception $e) {
-  > 664|             throw new QueryException(
-    665|                 $query, $this->prepareBindings($bindings), $e
-    666|             );
-    667|         }
-    668| 
-
-  Exception trace:
-
-  1   PDOException::("SQLSTATE[HY000] [1130] Host '172.27.0.2' is not allowed to connect to this MySQL server")
-      /work/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:70
-
-  2   PDO::__construct("mysql:host=db;port=3306;dbname=homestead", "homestead", "secret", [])
-      /work/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:70
-
-  Please use the argument -v to see more details.
-```
-
-このエラーが発生した場合は `my.cnf` を作成する前に `docker compose up -d` でビルドしてしまった可能性が高い。（大体このケース）
-
-```
-$ docker compose down --volumes --rmi all
-$ docker compose up -d --build
-```
-
-設定ファイルがない状態でMySQLの初期化が行われたでデータが永続化されてしまってるので一度ボリューム毎削除してビルドし直せばok。
-
-ーーーーWikiに追加 finーーーーー
+https://bit.ly/3x4egvf
 
 ### Migrationに成功したらContainerを落とす
 ```
