@@ -7,7 +7,7 @@ Dev-template-Ver.1 with laravel6.* on vue2.* based on docker.
 
 ※編集中
 
-・バージョン（Laravel:6.20.30, Docker, Docker Compose, ...）
+・バージョン（Docker for Mac, Docker, Docker Compose, ...）
 ・環境構築方法 \
 git clone \
 composer install \
