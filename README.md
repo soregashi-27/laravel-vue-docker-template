@@ -1,5 +1,5 @@
 # laravel-vue-docker-template-v1
-Dev template with laravel and vue based on docker. Version1
+Dev-template-Ver.1 with laravel6.* on vue2.* based on docker.
 
 ※編集中
 
