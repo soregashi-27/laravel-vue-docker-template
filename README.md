@@ -9,25 +9,9 @@ git clone \
 composer install \
 db containerの設定 
 
-・環境構築の注意点 \
-db containerの設定をする前にbuildしないこと（想定されるエラーが出る可能性あり）
-
-
-・想定されるエラー \
-buildしてdocker volumesが残っちゃっててコードの更新が反映されてないことに気づかず古いコンテナで動かしちゃってるパターン \
-→wikiに詳細を追加してreadmeにはリンクを入れるだけでOK
-
 ---------
 
-wikiに書く内容 \
-コード内容に関する説明
-
-+ laravel UIを追加する時の注意点
-+ laravel6.*の場合はver.1がmust. これ以外のバージョンは非対応 
-
----------
-
-READMEに残す内容
+READMEに残す内容【編集中】
 
 ## Docker Containerを立ち上げる
 ### git cloneする
@@ -278,5 +262,7 @@ app_1  | 172.20.0.3 -  25/Jul/2021:05:48:51 +0000 "GET /index.php" 200
 
 
 vue、vuetifyを追加（wikiリンク→準備中）
++ laravel UIを追加する時の注意点
++ laravel6.*の場合はver.1がmust. これ以外のバージョンは非対応 
 
 Laravelの初期設定。（wikiリンク→準備中）
