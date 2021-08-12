@@ -226,5 +226,8 @@ app_1  | 172.20.0.3 -  25/Jul/2021:05:48:51 +0000 "GET /index.php" 200
 vue、vuetifyを追加（wikiリンク→準備中）
 + laravel UIを追加する時の注意点
 + laravel6.*の場合はver.1がmust. これ以外のバージョンは非対応 
+```
+composer require laravel/ui "1.x" --dev
+```
 
 Laravelの初期設定。（wikiリンク→準備中）
