@@ -1,7 +1,7 @@
 FROM node:14-alpine as node
 FROM nginx:1.20-alpine
 LABEL maintainer="soregashi-27"
-SHELL ["/bin/bash", "-ouex", "pipefail", "-c"]
+SHELL ["/bin/ash", "-ouex", "pipefail", "-c"]
 
 ENV TZ=UTC
 
