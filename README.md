@@ -1,5 +1,6 @@
 # laravel-vue-docker-template-v1
 Dev-template-Ver.1 with laravel6.* on vue2.* based on docker.
+Branch of 'template' means plane version.(Don't have a image of Node.js)
 
 
 ![Laravel 6.20.30](https://img.shields.io/badge/Laravel-6.20.30-red)
