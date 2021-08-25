@@ -44,6 +44,11 @@ docker compose up -d --build
 docker compose exec app bash
 ```
 
+### Composer installする
+```
+composer install
+```
+
 ### Laravel6系が入ったかを確認する
 ```
 php artisan -V
